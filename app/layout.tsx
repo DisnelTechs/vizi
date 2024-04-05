@@ -39,12 +39,7 @@ const menuItems = [
     title: "Blog",
     url: "/blog",
     items: [],
-  },
-  {
-    title: "Contacto",
-    url: "/contacto",
-    items: [],
-  },
+  }
 ];
 
 export default function RootLayout({
