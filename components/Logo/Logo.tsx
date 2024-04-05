@@ -1,33 +1,18 @@
-"use client";
-
-import clsx from "clsx";
+import LogoSrc from "@/public/logo-white.jpeg";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 
 const Logo = () => {
-  const [animate, setAnimate] = useState(false);
   return (
     <Link href={`/`}>
-      <div
-        className="flex space-x-2 items-center hover:bg-indigo-800 hover:ring-2 ring-white py-2 px-4 rounded-full duration-300 ease-in-out shadow-xl"
-        onMouseEnter={() => setAnimate(true)}
-        onMouseLeave={() => setAnimate(false)}
-      >
-        <div
-          className={clsx(
-            "rounded-full overflow-hidden",
-            animate && "animate-spin"
-          )}
-        >
-          <Image
-            src="https://picsum.photos/50/50"
-            alt="ViziAr"
-            width={40}
-            height={40}
-          />
-        </div>
-        <div className="text-white tracking-widest font-bold">ViziAR</div>
+      <div className="flex space-x-2 items-center bg-white ring-2 hover:ring-4 ring-accent py-2 px-4 rounded-full duration-300 ease-in-out shadow-xl">
+        <Image
+          src={LogoSrc}
+          alt="ViziAr"
+          width={0}
+          height={0}
+          style={{ width: "100px", height: "auto" }}
+        />
       </div>
     </Link>
   );

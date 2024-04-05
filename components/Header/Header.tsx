@@ -10,7 +10,7 @@ const Header = ({ menu }: { menu: DrupalMenu }) => {
       <Logo />
       <NavMenu menu={menu} />
       <Link href={`/contacto`} className="hidden lg:block">
-        <div className="bg-indigo-800 hover:bg-indigo-600 hover:ring-2 ring-white duration-300 ease-in-out text-white font-bold rounded-full px-6 py-3">
+        <div className="bg-primary hover:bg-secondary hover:ring-2 ring-white duration-300 ease-in-out text-accent hover:text-white font-bold rounded-full px-6 py-3">
           Contacto
         </div>
       </Link>
