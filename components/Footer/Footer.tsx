@@ -1,5 +1,5 @@
 import { DrupalMenu } from "@/types/drupal";
-import NavMenu from "../Header/NavMenu";
+import Link from "next/link";
 import {
   FaFacebook,
   FaInstagram,
@@ -7,9 +7,8 @@ import {
   FaPhone,
   FaTwitter,
 } from "react-icons/fa";
-import Link from "next/link";
-import { BsMailbox } from "react-icons/bs";
 import { FaAt } from "react-icons/fa6";
+import NavMenu from "../Header/NavMenu";
 
 const socialData = [
   {
