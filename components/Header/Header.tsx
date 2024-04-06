@@ -14,7 +14,7 @@ const Header = ({ menu }: { menu: DrupalMenu }) => {
           Contacto
         </div>
       </Link>
-      <NavMenuMobile />
+      <NavMenuMobile menu={menu} />
     </header>
   );
 };
