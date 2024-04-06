@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -39,7 +40,7 @@ const menuItems = [
     title: "Blog",
     url: "/blog",
     items: [],
-  }
+  },
 ];
 
 export default function RootLayout({
@@ -52,6 +53,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <Header menu={{ tree: menuItems }} />
         {children}
+        <Footer menu={{ tree: menuItems }} />
       </body>
     </html>
   );
