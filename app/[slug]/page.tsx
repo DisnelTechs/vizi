@@ -1,5 +1,6 @@
 import Hero from "@/components/Hero";
 import { DrupalEntity } from "@/types/drupal";
+import { DrupalJsonApiParams } from "drupal-jsonapi-params";
 
 interface PageProps {
   params: {
@@ -22,9 +23,15 @@ const Page = async ({ params: { slug } }: PageProps) => {
  * TODO: Restore caching once in production. Handle pagination scenarios (more than 50 items).
  */
 const getPageData = async (slug: string) => {
+  const apiParams = new DrupalJsonApiParams();
+  apiParams.addFields("node--page", ["title", "field_subtitle", "path"]);
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_DRUPAL_URL}${process.env.JSON_API_ENDPOINT}/node/page?fields[node--page]=title,field_subtitle,path`,
+      `${process.env.NEXT_PUBLIC_DRUPAL_URL}${
+        process.env.JSON_API_ENDPOINT
+      }/node/page?${apiParams.getQueryString({
+        encode: false,
+      })}`,
       { cache: "no-cache" }
     );
     const data = await res.json();
