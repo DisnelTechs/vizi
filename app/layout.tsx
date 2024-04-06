@@ -32,6 +32,24 @@ const menuItems = [
     ],
   },
   {
+    title: "Servicios",
+    url: "/servicios",
+    items: [
+      {
+        title: "Desarrollo de Aplicaciones",
+        url: "/desarrollo-de-aplicaciones",
+        description:
+          "Desarrollamos aplicaciones de realidad aumentada y virtual para empresas y organizaciones.",
+      },
+      {
+        title: "Consultoría",
+        url: "/consultoria",
+        description:
+          "Brindamos asesoramiento y consultoría en tecnologías de realidad aumentada y virtual.",
+      },
+    ],
+  },
+  {
     title: "Acerca",
     url: "/acerca",
     items: [],
