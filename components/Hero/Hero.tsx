@@ -11,11 +11,11 @@ interface HeroProps {
 export default function Hero({
   title,
   subtitle,
-  imgSrc,
+  imgSrc = "",
   logo = "",
 }: HeroProps) {
   const commonProps = {
-    image: imgSrc ?? "https://picsum.photos/1366/768",
+    image: imgSrc?.length > 0 ? imgSrc : "https://picsum.photos/1366/768",
     className: "relative h-screen bg-black",
   };
 

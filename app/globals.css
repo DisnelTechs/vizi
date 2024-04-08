@@ -2,4 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    h2 {
+        @apply text-4xl font-bold mb-5;
+    }
 
+    main ul li, p {
+        @apply text-xl mb-3 list-[square] ml-5;
+    }
+}

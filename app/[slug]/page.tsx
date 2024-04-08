@@ -13,15 +13,23 @@ const Page = async ({ params: { slug } }: PageProps) => {
   const pageData = await getNodeFromSlug("page", slug, [
     "title",
     "field_subtitle",
-    "path"
+    "path",
+    "body"
   ]);
-  const { title, field_subtitle } = pageData
+  const { title, field_subtitle, body } = pageData
     ? pageData.attributes
-    : { title: slug, field_subtitle: "" };
+    : { title: slug, field_subtitle: "", body: { value: "" } };
   const imageSrc = pageData
     ? await getImageSrc("node--page", pageData.id, "field_hero_background")
     : "";
-  return <Hero title={title} subtitle={field_subtitle} imgSrc={imageSrc} />;
+  return (
+    <main>
+      <Hero title={title} subtitle={field_subtitle} imgSrc={imageSrc} />
+      <section className="container py-20">
+        <div dangerouslySetInnerHTML={{ __html: body.value }} />
+      </section>
+    </main>
+  );
 };
 
 /**

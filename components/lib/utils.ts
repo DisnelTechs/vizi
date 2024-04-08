@@ -35,7 +35,7 @@ export async function getImageSrc(
     }
 
     const jsonData = await response.json();
-    const imageSrc = jsonData.included.find(
+    const imageSrc = jsonData?.included.find(
       (item: any) => item.type === "file--file"
     );
 
