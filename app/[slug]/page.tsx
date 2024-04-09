@@ -1,6 +1,7 @@
 import Hero from "@/components/Hero";
 import { getImageSrc, getNodeFromSlug } from "@/components/lib/utils";
 import { DrupalEntity } from "@/types/drupal";
+import clsx from "clsx";
 import { DrupalJsonApiParams } from "drupal-jsonapi-params";
 
 interface PageProps {
@@ -9,12 +10,31 @@ interface PageProps {
   };
 }
 
+const getRandomPos = (radius: number) => {
+  const sides = ["top", "right", "bottom", "left"];
+  const selectedSide = sides[Math.floor(Math.random() * sides.length)];
+
+  const fixedPos = `-${Math.trunc(radius / 2)}px`;
+
+  if (selectedSide === "top" || selectedSide === "bottom") {
+    return {
+      [selectedSide]: fixedPos,
+      left: Math.floor(Math.random() * 100) + "%",
+    };
+  }
+
+  return {
+    [selectedSide]: fixedPos,
+    top: Math.floor(Math.random() * 100) + "%",
+  };
+};
+
 const Page = async ({ params: { slug } }: PageProps) => {
   const pageData = await getNodeFromSlug("page", slug, [
     "title",
     "field_subtitle",
     "path",
-    "body"
+    "body",
   ]);
   const { title, field_subtitle, body } = pageData
     ? pageData.attributes
@@ -22,12 +42,26 @@ const Page = async ({ params: { slug } }: PageProps) => {
   const imageSrc = pageData
     ? await getImageSrc("node--page", pageData.id, "field_hero_background")
     : "";
+
+  const radius = Math.trunc(100 + Math.random() * 300);
+  const pos = getRandomPos(radius);
+
   return (
     <main>
       <Hero title={title} subtitle={field_subtitle} imgSrc={imageSrc} />
-      <section className="container py-20">
-        <div dangerouslySetInnerHTML={{ __html: body.value }} />
-      </section>
+      <div className="relative overflow-hidden">
+        <section className="max-w-4xl mx-auto py-20">
+          <div dangerouslySetInnerHTML={{ __html: body.value }} />
+          <div
+            className="absolute bg-primary rounded-full border-8 border-black"
+            style={{
+              width: `${radius}px`,
+              height: `${radius}px`,
+              ...pos,
+            }}
+          />
+        </section>
+      </div>
     </main>
   );
 };
