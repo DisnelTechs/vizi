@@ -18,36 +18,23 @@ const menuItems = [
     url: "/soluciones",
     items: [
       {
-        title: "Realidad Aumentada",
-        url: "/realidad-aumentada",
+        title: "Soluciones Integrales para la Gestión Hospitalaria",
+        url: "/soluciones-gestion-hospitalaria",
         description:
-          "La realidad aumentada es una tecnología que superpone información digital en el mundo real.",
+          "Sistemas diseñados específicamente para satisfacer las necesidades de la gestión hospitalaria",
       },
       {
-        title: "Realidad Virtual",
-        url: "/realidad-virtual",
+        title: "Soluciones Innovadoras para la Gestión Gubernamental",
+        url: "/soluciones-gestion-gubernamental",
         description:
-          "La realidad virtual es una tecnología que sumerge al usuario en un entorno digital.",
+          "Sistemas integrales diseñados para satisfacer las necesidades únicas de la gobernanza moderna",
       },
     ],
   },
   {
     title: "Servicios",
     url: "/servicios",
-    items: [
-      {
-        title: "Desarrollo de Aplicaciones",
-        url: "/desarrollo-de-aplicaciones",
-        description:
-          "Desarrollamos aplicaciones de realidad aumentada y virtual para empresas y organizaciones.",
-      },
-      {
-        title: "Consultoría",
-        url: "/consultoria",
-        description:
-          "Brindamos asesoramiento y consultoría en tecnologías de realidad aumentada y virtual.",
-      },
-    ],
+    items: [],
   },
   {
     title: "Acerca",

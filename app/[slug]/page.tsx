@@ -50,17 +50,19 @@ const Page = async ({ params: { slug } }: PageProps) => {
     <main>
       <Hero title={title} subtitle={field_subtitle} imgSrc={imageSrc} />
       <div className="relative overflow-hidden">
-        <section className="max-w-4xl mx-auto py-20">
-          <div dangerouslySetInnerHTML={{ __html: body.value }} />
-          <div
-            className="absolute bg-primary rounded-full border-8 border-black"
-            style={{
-              width: `${radius}px`,
-              height: `${radius}px`,
-              ...pos,
-            }}
-          />
-        </section>
+        {body && (
+          <section className="max-w-4xl mx-auto py-20">
+            <div dangerouslySetInnerHTML={{ __html: body.value }} />
+            <div
+              className="absolute bg-primary rounded-full border-8 border-black"
+              style={{
+                width: `${radius}px`,
+                height: `${radius}px`,
+                ...pos,
+              }}
+            />
+          </section>
+        )}
       </div>
     </main>
   );
