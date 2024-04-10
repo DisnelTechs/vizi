@@ -27,7 +27,7 @@ const NavMenu = ({ menu, variant = "header" }: NavMenuProps) => {
                 </Popover.Button>
                 <Popover.Panel className="absolute z-[9999] rounded-xl shadow-2xl border-primary border-4 bg-white outline-white mt-3 min-w-[30vw]">
                   <ul className="space-y-2">
-                    {item.items.map((item, index) => (
+                    {item.items.map((item: any, index: number) => (
                       <li key={index}>
                         <Popover.Button as={Link} href={item.url}>
                           <div className="hover:bg-primary hover:text-white p-3 duration-300 ease-in-out">
