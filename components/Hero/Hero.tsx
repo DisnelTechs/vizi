@@ -16,7 +16,7 @@ export default function Hero({
 }: HeroProps) {
   const commonProps = {
     image: imgSrc?.length > 0 ? imgSrc : "https://picsum.photos/1366/768",
-    className: "relative h-screen bg-black",
+    className: "relative h-[80vh] bg-black",
   };
 
   return (
