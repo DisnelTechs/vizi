@@ -52,9 +52,9 @@ const Page = async ({ params: { slug } }: PageProps) => {
       <div className="relative overflow-hidden">
         {body && (
           <section className="max-w-4xl mx-auto py-20">
-            <div dangerouslySetInnerHTML={{ __html: body.value }} />
+            <div className="relative z-10" dangerouslySetInnerHTML={{ __html: body.value }} />
             <div
-              className="absolute bg-primary rounded-full border-8 border-black"
+              className="absolute bg-primary rounded-full border-8 border-black z-0 hidden lg:block"
               style={{
                 width: `${radius}px`,
                 height: `${radius}px`,
