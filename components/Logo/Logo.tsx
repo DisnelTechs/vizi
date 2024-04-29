@@ -14,9 +14,9 @@ const Logo = ({ onClick }: { onClick?: () => void }) => {
         <Image
           src={LogoSrc}
           alt="ViziAr"
-          width={0}
+          width={80}
           height={0}
-          style={{ width: "100px", height: "auto" }}
+          style={{ height: "auto" }}
         />
       </div>
     </Link>
