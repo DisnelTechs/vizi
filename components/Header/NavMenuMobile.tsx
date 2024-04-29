@@ -1,11 +1,10 @@
-"use client";
-
+import { DrupalMenu } from "@/types/drupal";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/16/solid";
 import clsx from "clsx";
+import Link from "next/link";
 import { useState } from "react";
 import Logo from "../Logo";
-import { DrupalMenu } from "@/types/drupal";
-import Link from "next/link";
+import SocialLinks from "../common/SocialLinks";
 
 const NavMenuMobile = ({ menu }: { menu: DrupalMenu }) => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -18,7 +17,7 @@ const NavMenuMobile = ({ menu }: { menu: DrupalMenu }) => {
 
       <div
         className={clsx(
-          "absolute bg-primary w-full h-screen top-0 left-0 p-5",
+          "absolute bg-primary w-screen h-screen top-0 left-0 p-8",
           menuOpen ? "block" : "hidden"
         )}
       >
@@ -29,11 +28,11 @@ const NavMenuMobile = ({ menu }: { menu: DrupalMenu }) => {
             onClick={() => setMenuOpen(false)}
           />
         </div>
-        <ul className="space-y-2 mt-5">
+        <ul className="space-y-1 mt-8 text-right">
           {menu.tree.map((item, index) => (
             <li key={index}>
               <Link
-                className="text-white hover:text-accent hover:bg-primary hover:shadow-xl px-5 py-2 rounded-full ease-in-out duration-300 font-bold uppercase text-lg"
+                className="text-white hover:text-accent hover:bg-primary hover:shadow-xl pl-5 py-2 rounded-full ease-in-out duration-300 font-bold uppercase text-lg"
                 href={item.url}
                 onClick={() => setMenuOpen(false)}
               >
@@ -41,6 +40,9 @@ const NavMenuMobile = ({ menu }: { menu: DrupalMenu }) => {
               </Link>
             </li>
           ))}
+          <div className="pt-8">
+            <SocialLinks align="right" spacing="small" />
+          </div>
         </ul>
       </div>
     </div>
