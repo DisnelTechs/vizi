@@ -53,7 +53,7 @@ const ContactButton = ({
 
 const Footer = ({ menu }: { menu: DrupalMenu }) => {
   return (
-    <footer className="bg-black py-20 w-full text-white">
+    <footer className="bg-black py-12 lg:py-20 w-full text-white">
       <div className="container flex flex-col items-center space-y-10">
         <NavMenu menu={menu} variant="footer" />
         <div className="flex space-x-10">

@@ -12,44 +12,22 @@ interface NavMenuProps {
 const NavMenu = ({ menu, variant = "header" }: NavMenuProps) => {
   return (
     <nav className={variant === "header" ? "hidden lg:block" : ""}>
-      <ul className="flex space-x-1 items-center">
+      <ul
+        className={clsx(
+          variant === "header"
+            ? "flex space-x-1 items-center"
+            : "grid grid-cols-2 justify-center justify-items-center"
+        )}
+      >
         {menu.tree.map((item, index) => {
-          return item.items.length > 0 ? (
-            <li key={index}>
-              <Popover className="relative">
-                <Popover.Button
-                  className={clsx(
-                    "text-white hover:text-accent px-5 py-2 rounded-full ease-in-out duration-300 font-bold block",
-                    variant === "header" && "hover:bg-primary hover:shadow-xl"
-                  )}
-                >
-                  {item.title}
-                </Popover.Button>
-                <Popover.Panel className="absolute z-[9999] rounded-xl shadow-2xl border-primary border-4 bg-white outline-white mt-3 min-w-[30vw]">
-                  <ul className="space-y-2">
-                    {item.items.map((item: any, index: number) => (
-                      <li key={index}>
-                        <Popover.Button as={Link} href={item.url}>
-                          <div className="hover:bg-primary hover:text-white p-3 duration-300 ease-in-out">
-                            <div className="font-bold">{item.title}</div>
-                            <div className="h-1 w-3/4 rounded-full bg-black"></div>
-                            <div>{item.description}</div>
-                          </div>
-                        </Popover.Button>
-                      </li>
-                    ))}
-                  </ul>
-                </Popover.Panel>
-              </Popover>
-            </li>
-          ) : (
+          return (
             <li key={index}>
               <Link
+                href={item.url}
                 className={clsx(
-                  "text-white hover:text-accent  px-5 py-2 rounded-full ease-in-out duration-300 font-bold",
+                  "text-white hover:text-accent px-5 py-2 rounded-full ease-in-out duration-300 font-bold block",
                   variant === "header" && "hover:bg-primary hover:shadow-xl"
                 )}
-                href={item.url}
               >
                 {item.title}
               </Link>
