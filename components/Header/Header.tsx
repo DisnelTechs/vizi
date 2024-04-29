@@ -8,6 +8,7 @@ import NavMenuMobile from "./NavMenuMobile";
 import { useScroll } from "framer-motion";
 import { useEffect, useState } from "react";
 import clsx from "clsx";
+import ContactButton from "../common/ContactButton";
 
 const Header = ({ menu }: { menu: DrupalMenu }) => {
   const { scrollYProgress } = useScroll();
@@ -25,18 +26,16 @@ const Header = ({ menu }: { menu: DrupalMenu }) => {
   return (
     <header
       className={clsx(
-        "fixed w-full mx-auto z-50 flex justify-between px-4 py-3 lg:px-[10%] items-center",
+        "fixed w-full mx-auto z-50 flex justify-between px-8 py-8 lg:px-[10%] items-center",
         `bg-${bg} bg-opacity-70`,
-        bg === "white" && "shadow-2xl",
+        bg === "white" && "shadow-2xl"
       )}
     >
       <Logo />
       <NavMenu menu={menu} />
-      <Link href={`/contacto`} className="hidden lg:block">
-        <div className="bg-primary hover:bg-secondary hover:ring-2 ring-white duration-300 ease-in-out text-accent hover:text-white font-bold rounded-full px-6 py-3">
-          Contacto
-        </div>
-      </Link>
+      <div className="hidden lg:block">
+        <ContactButton />
+      </div>
       <NavMenuMobile menu={menu} />
     </header>
   );
