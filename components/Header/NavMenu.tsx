@@ -1,8 +1,8 @@
 "use client";
 import { DrupalMenu } from "@/types/drupal";
-import { Popover } from "@headlessui/react";
 import clsx from "clsx";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 interface NavMenuProps {
   menu: DrupalMenu;
@@ -10,6 +10,8 @@ interface NavMenuProps {
 }
 
 const NavMenu = ({ menu, variant = "header" }: NavMenuProps) => {
+  const pathname = usePathname();
+
   return (
     <nav className={variant === "header" ? "hidden lg:block" : ""}>
       <ul
@@ -26,7 +28,8 @@ const NavMenu = ({ menu, variant = "header" }: NavMenuProps) => {
                 href={item.url}
                 className={clsx(
                   "text-white hover:text-accent px-5 py-2 rounded-full ease-in-out duration-300 font-bold block",
-                  variant === "header" && "hover:bg-primary hover:shadow-xl"
+                  variant === "header" && "hover:bg-primary hover:shadow-xl",
+                  pathname === item.url && "text-accent"
                 )}
               >
                 {item.title}
