@@ -16,7 +16,7 @@ const NavMenu = ({ menu, variant = "header" }: NavMenuProps) => {
         className={clsx(
           variant === "header"
             ? "flex space-x-1 items-center"
-            : "grid grid-cols-2 justify-center justify-items-center"
+            : "grid grid-cols-2 justify-center justify-items-center lg:flex lg:space-x-1 lg:items-center"
         )}
       >
         {menu.tree.map((item, index) => {

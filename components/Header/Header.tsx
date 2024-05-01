@@ -1,14 +1,13 @@
 "use client";
 
 import { DrupalMenu } from "@/types/drupal";
-import Link from "next/link";
+import clsx from "clsx";
+import { useScroll } from "framer-motion";
+import { useEffect, useState } from "react";
+import ContactButton from "../common/ContactButton";
 import Logo from "../Logo";
 import NavMenu from "./NavMenu";
 import NavMenuMobile from "./NavMenuMobile";
-import { useScroll } from "framer-motion";
-import { useEffect, useState } from "react";
-import clsx from "clsx";
-import ContactButton from "../common/ContactButton";
 
 const Header = ({ menu }: { menu: DrupalMenu }) => {
   const { scrollYProgress } = useScroll();
