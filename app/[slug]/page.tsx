@@ -51,7 +51,7 @@ const Page = async ({ params: { slug } }: PageProps) => {
       <Hero title={title} subtitle={field_subtitle} imgSrc={imageSrc} />
       <div className="relative overflow-hidden">
         {body && (
-          <section className="max-w-4xl mx-auto py-20">
+          <section className="px-5 lg:px-0 lg:max-w-4xl mx-auto py-20">
             <div className="relative z-10" dangerouslySetInnerHTML={{ __html: body.value }} />
             <div
               className="absolute bg-primary rounded-full border-8 border-black z-0 hidden lg:block"
