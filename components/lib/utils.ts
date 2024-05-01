@@ -79,3 +79,49 @@ export async function getNodeFromSlug(
     return null;
   }
 }
+
+export async function getSoluciones() {
+  const catSoluciones = {
+    sol_gestion_gubernamental:
+      "Soluciones Innovadoras para la Gestión Gubernamental",
+    sol_gestion_hospitalaria:
+      "Soluciones Integrales para la Gestión Hospitalaria",
+  };
+
+  type SolucionKey = "sol_gestion_gubernamental" | "sol_gestion_hospitalaria";
+
+  const apiParams = new DrupalJsonApiParams();
+  apiParams.addFields("node--solucion", [
+    "title",
+    "field_descripcion",
+    "field_categoria_solucion",
+  ]);
+
+  try {
+    const res = await fetch(
+      `${
+        process.env.NEXT_PUBLIC_DRUPAL_API_URL
+      }/node/solucion?${apiParams.getQueryString({
+        encode: false,
+      })}`,
+      { cache: "no-cache" }
+    );
+    const result = await res.json();
+    return result.data.length
+      ? result.data.map((solucion: DrupalEntity) => {
+          const category =
+            catSoluciones[
+              solucion.attributes.field_categoria_solucion as SolucionKey
+            ];
+          return {
+            title: solucion.attributes.title,
+            description: solucion.attributes.field_descripcion.value,
+            category: category ? category : "Unknown category",
+          };
+        })
+      : null;
+  } catch (e) {
+    console.error(e);
+    return null;
+  }
+}
